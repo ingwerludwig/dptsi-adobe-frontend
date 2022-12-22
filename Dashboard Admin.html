@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/Kalmansk-Regular.css">
+    <link rel="stylesheet" href="assets/css/Source%20Sans%20Pro.css">
+    <link rel="stylesheet" href="assets/css/Ubuntu%20Mono.css">
+    <link rel="stylesheet" href="assets/css/Bootstrap-DataTables.css">
+    <link rel="stylesheet" href="assets/css/CoolFont---Text-Container.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/Juvi---Push-Empty-Space-20px.css">
+    <link rel="stylesheet" href="assets/css/Pretty-Registration-Form-.css">
+    <link rel="stylesheet" href="assets/css/untitled.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+</head>
+
+<body>
+    <div class="container py-5">
+        <header class="text-center text-black" style="margin : 0 auto;padding-bottom:100px">
+            <h1 class="display-4">Dashboard Admin DPTSI Adobe License</h1>
+          </header>
+        <div  class="row register-form ">
+            <div class="col-md-12 col-lg-9 offset-md-2">
+                <a href="./Antrian Admin.html">
+                    <button class="btn btn-primary" style="border: none;width: 160px;height: 45px;margin-left: 50px;background-color: #013880;float: left;" type="button">
+                        List User Request
+                    </button>
+                </a>
+                <form class="custom-form rounded" style="margin-top:90px">
+                    <div>
+                        <canvas id="myChart"></canvas>
+                      </div>
+                    
+                </form>
+            </div>
+            <div class="d-flex align-items-center row row-xs">
+                <div class="col-lg-10">
+                <span class="tx-medium tx-color-03 tx-13">Copyright © 2022 Institut Teknologi Sepuluh Nopember</span>
+              </div>
+              
+                <div class="col-lg-2 mg-lg-t-0 d-flex justify-content-end">
+                <img src="assets/img/logo-its-biru.png"  height="40" class="mg-r-10">
+                <img src="assets/img/logo-its-semangat-baru.png "  height="40" class="mg-r-10">
+              </div>
+              </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script src="assets/js/Bootstrap-DataTables.js"></script>
+    <script src="assets/js/stylish-portfolio.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('myChart');
+      
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ['FTEIC', 'FTIRS', 'FTK', 'CREABIZ', 'CIVPLAN', 'VOCATION','TENDIK',],
+            datasets: [{
+              label: 'Statistic of Faculty Per Month',
+              data: [12, 19, 3, 5, 2, 3,10],
+              backgroundColor: ["red", "blue", "green", "yellow", "pink", "purple","gray"], 
+              borderWidth: 1,
+              borderColor: "#0000ff",
+            }]
+          },
+          options: {
+         
+    
+            onClick: function (event, elements){  
+                if (elements.length > 0) {   
+                    // To get the clicked element
+                    const clickedElement = this.ctx.getElementAtEvent(event);
+         
+                    // To get the group id of the clicked element
+                    const groupIndex = clickedElement[0]._index;
+         
+                    // To get the id of the clicked element with in the group
+                    const barIndex = clickedElement[0]._datasetIndex;
+                }
+            },
+            
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+
+        function graphClickEvent(event, array){
+            if(array[0]){
+               console.log("a")
+            }
+        }
+      </script>
+      <script>
+        function graphClickEvent(event, array){
+        if(array[0]){
+       foo.bar;
+    }
+}
+      </script>
+      
+</body>
+
+</html>

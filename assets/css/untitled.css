@@ -1,0 +1,44 @@
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+img.template {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+p {
+  text-align: center;
+  margin-right: 240px;
+}
+
+body {
+  font-family: 'Poppins';font-size: 14px;
+  background-color: #f0f2f5;
+}
+
+h1{
+  font-family: 'Poppins';font-size: 14px;
+}
+
+label{
+  font-family: 'Poppins';font-size: 14px;
+}
+
+.field{
+  font-family: 'Poppins';font-size: 14px;
+}
+
+#bootstrap-overrides { /* 100+1=101 priority score, yay! */
+  border-collapse: collapse;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+.mg-r-10 {
+  margin-right: 10px;
+}
