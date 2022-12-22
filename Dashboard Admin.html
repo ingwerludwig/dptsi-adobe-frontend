@@ -20,20 +20,36 @@
 
 <body>
     <div class="container py-5">
-        <header class="text-center text-black" style="margin : 0 auto;padding-bottom:100px">
+        <header class="text-center text-align: center text-black" style="margin : 0 auto;padding-bottom:60px">
             <h1 class="display-4">Dashboard Admin DPTSI Adobe License</h1>
           </header>
         <div  class="row register-form ">
             <div class="col-md-12 col-lg-9 offset-md-2">
+              
+              <!-- <a href="./Form Pengajuan.html">
+                <button class="btn btn-primary" style="border: none;width: 160px;height: 40px;background-color: #013880;margin-bottom:40px;margin-left:10px" type="button">
+                  Book New License
+                </button>
+              </a> -->
+        
+              <a href="./Form Pengajuan.html">
+                <button class="btn btn-primary" style="border: none;width: 165px;height: 40px;margin-left: 50px;background-color: #013880;float: left;" type="button">
+                  Book New License
+                </button>
+            </a>
+
                 <a href="./Antrian Admin.html">
-                    <button class="btn btn-primary" style="border: none;width: 160px;height: 45px;margin-left: 50px;background-color: #013880;float: left;" type="button">
+                    <button class="btn btn-primary" style="border: none;width: 165px;height: 40px;margin-left: 50px;background-color: #013880;float: left;" type="button">
                         List User Request
                     </button>
                 </a>
                 <form class="custom-form rounded" style="margin-top:90px">
-                    <div>
-                        <canvas id="myChart"></canvas>
+                    <div class>
+                      <h5 style="padding-top: 5px;text-align: center;">Faculty per Month</h5>
+                        <canvas width="700" id="myChart"></canvas>
                       </div>
+                      
+                      
                     
                 </form>
             </div>
@@ -56,59 +72,48 @@
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
     <script src="assets/js/Bootstrap-DataTables.js"></script>
     <script src="assets/js/stylish-portfolio.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     <script>
         const ctx = document.getElementById('myChart');
       
         new Chart(ctx, {
           type: 'bar',
           data: {
-            labels: ['FTEIC', 'FTIRS', 'FTK', 'CREABIZ', 'CIVPLAN', 'VOCATION','TENDIK',],
-            datasets: [{
-              label: 'Statistic of Faculty Per Month',
-              data: [12, 19, 3, 5, 2, 3,10],
-              backgroundColor: ["red", "blue", "green", "yellow", "pink", "purple","gray"], 
-              borderWidth: 1,
-              borderColor: "#0000ff",
-            }]
+             labels: ['FTEIC', 'FTK','FTIRS','FSAD','CIVPLAN','CREABIZ','VOCATION'], // responsible for how many bars are gonna show on the chart
+             // create 12 datasets, since we have 12 items
+             // data[0] = labels[0] (data for first bar - 'Standing costs') | data[1] = labels[1] (data for second bar - 'Running costs')
+             // put 0, if there is no data for the particular bar
+             datasets: [{
+                label: 'Mahasiswa',
+                data: [3, 8, 10, 2, 3, 2, 9],
+                backgroundColor: '#22aa99'
+             }, {
+                label: 'Dosen & Tendik',
+                data: [2, 1, 2, 3, 2, 1, 4],
+                backgroundColor: '#994499'
+             }, {
+                label: 'Staff',
+                data: [4, 5, 6, 7, 2, 1, 4],
+                backgroundColor: '#316395'
+             }]
           },
           options: {
-         
-    
-            onClick: function (event, elements){  
-                if (elements.length > 0) {   
-                    // To get the clicked element
-                    const clickedElement = this.ctx.getElementAtEvent(event);
-         
-                    // To get the group id of the clicked element
-                    const groupIndex = clickedElement[0]._index;
-         
-                    // To get the id of the clicked element with in the group
-                    const barIndex = clickedElement[0]._datasetIndex;
-                }
-            },
-            
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            }
+             responsive: false,
+             legend: {
+                position: 'right' // place legend on the right side of chart
+             },
+             scales: {
+                xAxes: [{
+                   stacked: true // this should be set to make the bars stacked
+                }],
+                yAxes: [{
+                   stacked: true // this also..
+                }]
+             }
           }
-        });
+       });
+      </script>
 
-        function graphClickEvent(event, array){
-            if(array[0]){
-               console.log("a")
-            }
-        }
-      </script>
-      <script>
-        function graphClickEvent(event, array){
-        if(array[0]){
-       foo.bar;
-    }
-}
-      </script>
       
 </body>
 
