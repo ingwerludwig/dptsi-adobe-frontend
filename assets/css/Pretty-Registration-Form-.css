@@ -10,7 +10,7 @@
 }
 
 @media (max-width:400px) {
-  .register-form form.custom-form {
+  .register-form form.custom-form .chartAreaWrapper{
     padding: 55px 10px;
   }
 }
@@ -35,7 +35,7 @@
 }
 
 @media (max-width:768px) {
-  .register-form .custom-form .label-column {
+  .register-form .custom-form .label-column .chartAreaWrapper{
     text-align: left;
   }
 }

@@ -42,3 +42,23 @@ label{
 .mg-r-10 {
   margin-right: 10px;
 }
+
+
+.chartWrapper {
+    position: relative;
+}
+
+.chartWrapper > canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events:none;
+}
+
+.chartAreaWrapper {
+    overflow-x: scroll;
+}
+
+#myChart{
+  width: 100%;
+}
