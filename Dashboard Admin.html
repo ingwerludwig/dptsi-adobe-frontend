@@ -26,12 +26,6 @@
         <div  class="row register-form ">
             <div class="col-md-12 col-lg-9 offset-md-2">
               
-              <!-- <a href="./Form Pengajuan.html">
-                <button class="btn btn-primary" style="border: none;width: 160px;height: 40px;background-color: #013880;margin-bottom:40px;margin-left:10px" type="button">
-                  Book New License
-                </button>
-              </a> -->
-        
               <a href="./Form Pengajuan.html">
                 <button class="btn btn-primary" style="border: none;width: fit-content;height: fit-content;margin-left: 50px;background-color: #013880;float: left;" type="button">
                   Book New License
@@ -46,7 +40,11 @@
                 <form class="custom-form rounded" style="margin-top:90px">
                   <div class="chartWrapper">
                      <div class="chartAreaWrapper">
+                      <h1>Faculty Usage Per Month</h1>
                          <canvas id="myChart"></canvas>
+                         <br><br>
+                         <h1>Departemen Usage Per Month</h1>
+                         <canvas id="myChart1"></canvas>
                      </div>
                      <canvas id="myChartAxis"></canvas>
                  </div>  
@@ -67,22 +65,23 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-    <script src="assets/js/Bootstrap-DataTables.js"></script>
+    <!-- <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script> -->
+    <!-- <script src="assets/js/Bootstrap-DataTables.js"></script> -->
     <script src="assets/js/stylish-portfolio.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    
+
     <script>
         const ctx = document.getElementById('myChart');
       
-        new Chart(ctx, {
+        var chartFakultas = new Chart(ctx, {
           type: 'bar',
           data: {
              labels: ['FTEIC', 'FTK','FTIRS','FSAD','CIVPLAN','CREABIZ','VOCATION'], // responsible for how many bars are gonna show on the chart
-             // create 12 datasets, since we have 12 items
-             // data[0] = labels[0] (data for first bar - 'Standing costs') | data[1] = labels[1] (data for second bar - 'Running costs')
-             // put 0, if there is no data for the particular bar
              datasets: [{
+                barPercentage: 0.9,
+                categoryPercentage: 1,
                 label: 'Mahasiswa',
                 data: [3, 8, 10, 2, 3, 2, 9],
                 backgroundColor: '#22aa99'
@@ -114,17 +113,68 @@
              },
              scales: {
                 xAxes: [{
+                   stacked: true, // this should be set to make the bars stacked
+                }],
+                yAxes: [{
+                   stacked: true // this also..
+                }]
+             },
+             onClick: function(c,i) {
+                e = i[0];
+                var lable_name = this.data.labels[e._index];
+                getDataDepartemen(lable_name);
+             }
+          }
+       },);
+    </script>
+
+    <script>
+        const ctx1 = document.getElementById('myChart1');
+        var chartDepartemen = new Chart(ctx1, {
+          type: 'bar',
+          data: {
+             labels: [''],
+             datasets: [{
+                label: 'Mahasiswa',
+                data: [],
+                backgroundColor: '#22aa99'
+             }, {
+                label: 'Dosen & Staff',
+                data: [],
+                backgroundColor: '#994499'
+             }, {
+                label: 'Tendik',
+                data: [],
+                backgroundColor: '#316395'
+             }]
+          },
+          onAnimationComplete: function () {
+            var sourceCanvas = this.chart.ctx.canvas;
+            var copyWidth = this.scale.xScalePaddingLeft - 5;
+            var copyHeight = this.scale.endPoint + 5;
+            var targetCtx = document.getElementById("myChartAxis").getContext("2d");
+            targetCtx.canvas.width = copyWidth;
+            targetCtx.drawImage(sourceCanvas, 0, 0, copyWidth, copyHeight, 0, 0, copyWidth, copyHeight);
+        },
+          options: {
+             responsive: false,
+             legend: {
+                position: 'right' // place legend on the right side of chart
+             },
+             scales: {
+                xAxes: [{
                    stacked: true // this should be set to make the bars stacked
                 }],
                 yAxes: [{
                    stacked: true // this also..
                 }]
-             }
+             },
           }
-       });
-      </script>
+       },
+       );
+    </script>
 
-      <script>
+    <script>
          function resize(){    
            $("#myChart").outerHeight($(window).height()-$("#myChart").offset().top- Math.abs($("#myChart").outerHeight(true) - $("#myChart").outerHeight()));
          }
@@ -134,9 +184,30 @@
                resize();
            });
          });
-         </script>
+    </script>
 
-      
+    <script type="text/javascript">
+        function getDataDepartemen(lable_name){
+
+          console.log("DEPARTEMEN "+ lable_name);
+          this.chartDepartemen.data.labels[0] = lable_name;
+          this.chartDepartemen.data.datasets[0].data[0] = 80; //Mahasiswa
+          this.chartDepartemen.data.datasets[1].data[0] = 10; //Dosen & Staff
+          this.chartDepartemen.data.datasets[2].data[0] = 30; //Tendik
+
+          this.chartDepartemen.update();
+
+          var apiUrl = 'https://pokeapi.co/api/v2/pokemon/ditto/';
+          fetch(apiUrl).then(response => {
+            return response.json();
+          }).then(data => {
+            // Work with JSON data here
+            console.log(data);
+          }).catch(err => {
+            // Do something for an error here
+          });
+        }
+    </script>
 </body>
 
 </html>
