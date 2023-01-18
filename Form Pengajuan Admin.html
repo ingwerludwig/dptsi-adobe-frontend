@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>DPTSI Adobe License</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/Source%20Sans%20Pro.css">
+    <link rel="stylesheet" href="assets/css/Bootstrap-DataTables.css">
+    <link rel="stylesheet" href="assets/css/dropdown-search-bs4.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/Multi-Select-Dropdown-by-Jigar-Mistry.css">
+    <link rel="stylesheet" href="assets/css/NZFieldLabel.css">
+    <link rel="stylesheet" href="assets/css/Pretty-Registration-Form-.css">
+    <link rel="stylesheet" href="assets/css/select.css">
+    <link rel="stylesheet" href="assets/css/untitled.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <style> 
+        input[type=text] {
+          width: 100%;
+          padding: 12px 1px;
+          margin: 8px 0;
+          box-sizing: border-box;
+          border-radius: px;
+        }
+        </style>
+</head>
+
+<body>
+    <div class="container py-5">
+        <header class="text-center text-black">
+            <h1 class="display-4">Form Admin DPTSI Adobe License</h1>
+          </header>
+        <!-- Start: Pretty Registration Form -->
+        <div class="row register-form">
+            <div class="col-md-8 offset-md-2">
+ 
+                    <button onclick="history.back()" class="btn btn-primary" style="border: none;width: 80px;height: 35px;background-color: #013880;margin-top:40px;margin-left:50px" type="button">
+                        Back
+                    </button>
+               
+                <form class="custom-form rounded">
+              
+                    <div class="row form-group">
+                        <div class="col-sm-4 label-column"><label class="col-form-label" for="name-input-field">Name</label></div>
+                        <div class="col-sm-6 input-column">
+                            <!-- <label class="col-form-label" style="color: #67809f;">Ingwer Ludwig</label> -->
+                            <input type="text" id="name" name="name">
+                        </div>
+                        <div class="col-sm-4 label-column"><label class="col-form-label" for="name-input-field">SSO ID</label></div>
+                        <div class="col-sm-6 input-column">
+                            <input type="text" id="sso" name="sso">
+                        </div>
+                       
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-sm-4 label-column"><label class="col-form-label" for="email-input-field">Faculty / Non Faculty</label></div>
+                        <div class="col-sm-6 input-column">
+                            <!-- Start: select -->
+                            <form>
+                                <div class="field">
+                                    <select id="FAKULTAS" name="FAKULTAS" class="FAKULTAS" onchange="showJurusan(this.id, 'JURUSAN')" style="border-radius: 7px" >
+                                            <option value ="SCIENTICS">FAKULTAS SAINS DAN ANALITIKA DATA (SCIENTICS)</option>
+                                            <option value="MARTECH">FAKULTAS TEKNOLOGI KELAUTAN (MARTECH)</option>
+                                            <option value="INDSYS">FAKULTAS TEKNOLOGI INDUSTRI DAN REKAYASA SISTEM (INDSYS)</option>
+                                            <option value="ELECTICS">FAKULTAS TEKNOLOGI ELEKTRO DAN INFORMATIKA CERDAS (ELECTICS)</option>
+                                            <option value="CIVPLAN">FAKULTAS TEKNIK SIPIL, PERENCANAAN, DAN KEBUMIAN (CIVPLAN)</option>
+                                            <option value="CREABIZ">FAKULTAS DESAIN KREATIF DAN BISNIS DIGITAL (CREABIZ)</option>
+                                            <option value="VOCATIONS">FAKULTAS VOKASI (VOCATIONS)</option>
+                                            <option value="NON FAKULTAS">NON FAKULTAS</option>
+                                        </optgroup>
+                                    </select><label class="form-label mb-0" for="float-input"></label></div>
+
+                                    
+                        
+                            </form><!-- End: select -->
+                        </div>
+
+                        <div class="col-sm-4 label-column"><label class="col-form-label" for="email-input-field">Department / Unit</label></div>
+                        <div class="col-sm-6 input-column">
+                            <!-- Start: select -->
+                            <form>
+                                <div class="field" >
+                                    <select id="JURUSAN" name="JURUSAN" style="border-radius: 7px">
+
+                                    </select>
+                                </div>
+
+                                    
+                            </form><!-- End: select -->
+                        </div>
+
+                        <div class="col-sm-4 label-column"><label class="col-form-label" for="email-input-field">License Type</label></div>
+                        <div class="col-sm-6 input-column">
+                            <!-- Start: select -->
+                            <form>
+                                <div class="field">
+                                    <select class="form-select" style="border-radius: 7px">
+                                            <option value="12">Adobe Acrobat (3 Days) </option>
+                                            <option value="13">Adobe Premiere Pro (2 Days) </option>
+                                    </select><label class="form-label mb-0" for="float-input"></label></div>
+                            </form><!-- End: select -->
+                        </div>
+
+                        <div class="col-sm-4 label-column"><label class="col-form-label" for="email-input-field">Role</label></div>
+                        <div class="col-sm-6 input-column">
+                            <!-- Start: select -->
+                            <form>
+                                <div class="field">
+                                    <select class="form-select" style="border-radius: 7px">
+                                            <option value="12">Tendik </option>
+                                            <option value="13">Dosen </option>
+                                            <option value="13">Mahasiswa </option>
+                                    </select><label class="form-label mb-0" for="float-input"></label></div>
+                            </form><!-- End: select -->
+                        </div>
+                            
+                        <div class="btn-container">
+                            <div class="child">
+                                <a href="./Dashboard User Success.html"
+<button class="btn btn-primary btn-center" style="border:none;width:40%;height:100%;margin: 0 auto;background-color:#013880;margin-top:12px;text-align:center;" type="button">Submit</button>
+</a
+
+                            </div>
+                            
+                        </div>
+                       
+                    </div>
+
+                    
+                    
+                    
+                    
+                    
+                </form>
+                
+            </div>
+            <div class="d-flex align-items-center row row-xs">
+                <div class="col-lg-10">
+                <span class="tx-medium tx-color-03 tx-13">Copyright © 2022 Institut Teknologi Sepuluh Nopember</span>
+              </div>
+              
+                <div class="col-lg-2 mg-lg-t-0 d-flex justify-content-end">
+                <img src="assets/img/logo-its-biru.png"  height="40" class="mg-r-10">
+                <img src="assets/img/logo-its-semangat-baru.png "   height="40" class="mg-r-10">
+              </div>
+              </div>
+        </div><!-- End: Pretty Registration Form -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script src="assets/js/Bootstrap-DataTables.js"></script>
+    <script src="assets/js/stylish-portfolio.js"></script>
+    <script src="assets/js/dropdown-search-bs4.js"></script>
+    <script src="assets/js/Multi-Select-Dropdown-by-Jigar-Mistry.js"></script>
+    <script src="./form_pengajuan.js"></script>
+</body>
+
+</html>

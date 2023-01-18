@@ -25,10 +25,10 @@
         <header class="text-center text-align: center text-black" style="margin : 0 auto;padding-bottom:60px">
             <h1 class="display-4">Dashboard Admin DPTSI Adobe License</h1>
           </header>
-        <div  class="row register-form ">
-            <div class="col-md-12 col-lg-9 offset-md-2">
+        <div class="row register-form ">
+            <div class="col-md-12 col-lg-9 offset-md-2 card-flexibles">
               
-              <a href="./Form Pengajuan.html">
+              <a href="./Form Pengajuan Admin.html">
                 <button class="btn btn-primary" style="border: none;width: fit-content;height: fit-content;margin-left: 50px;background-color: #013880;float: left;" type="button">
                   Book New License
                 </button>
@@ -39,16 +39,33 @@
                         List User Request
                     </button>
                 </a>
-                <form class="custom-form rounded" style="margin-top:90px">
+                <form class="custom-form rounded card-flexible main-card" style="margin-top:90px">
                   <div class="chartWrapper">
                      <div class="chartAreaWrapper">
-                      <h1>Faculty Usage Per Month</h1>
+                        <h1>Faculty Usage Per Month</h1>
                          <canvas id="myChart"></canvas>
                          <br><br><br>
-                         <h1>Departemen Usage Per Month</h1>
-                         <canvas id="myChart1"></canvas>
+                         
                      </div>
                      <canvas id="myChartAxis"></canvas>
+                 </div>  
+                </form>
+                <form class="custom-form rounded card-flexible" style="margin-top:90px">
+                  <div class="chartWrapper">
+                     <div class="chartAreaWrapper">
+                      <h1>Role Usage Per Month</h1>
+                      <canvas id="myChart1"></canvas>
+                     </div>
+                     <canvas id="myChartAxis"></canvas>
+                 </div>  
+                </form>
+                <form class="custom-form rounded card-flexible" style="margin-top:90px">
+                  <div class="chartWrapper">
+                     <div class="chartAreaWrapper">
+                      <h1>Department Usage Per Month</h1>
+                      <canvas id="myChart2"></canvas>
+                     </div>
+                     <canvas id="myChartAxis2"></canvas>
                  </div>  
                 </form>
             </div>
@@ -88,7 +105,7 @@
                 data: [3, 8, 10, 2, 3, 2, 9],
                 backgroundColor: '#22aa99'
              }, {
-                label: 'Dosen & Staff',
+                label: 'Dosen',
                 data: [2, 1, 2, 3, 2, 1, 4],
                 backgroundColor: '#994499'
              }, {
@@ -131,8 +148,54 @@
     </script>
 
     <script>
+      const ctx2 = document.getElementById('myChart2');
+      var chartDepartemen = new Chart(ctx2, {
+        type: 'bar',
+        data: {
+           labels: [''],
+           datasets: [{
+              label: 'Mahasiswa',
+              data: [],
+              backgroundColor: '#22aa99'
+           }, {
+              label: 'Dosen',
+              data: [],
+              backgroundColor: '#994499'
+           }, {
+              label: 'Tendik',
+              data: [],
+              backgroundColor: '#316395'
+           }]
+        },
+        onAnimationComplete: function () {
+          var sourceCanvas = this.chart.ctx.canvas;
+          var copyWidth = this.scale.xScalePaddingLeft - 5;
+          var copyHeight = this.scale.endPoint + 5;
+          var targetCtx = document.getElementById("myChartAxis2").getContext("2d");
+          targetCtx.canvas.width = copyWidth;
+          targetCtx.drawImage(sourceCanvas, 0, 0, copyWidth, copyHeight, 0, 0, copyWidth, copyHeight);
+      },
+        options: {
+           responsive: false,
+           legend: {
+              position: 'right' // place legend on the right side of chart
+           },
+           scales: {
+              xAxes: [{
+                 stacked: true // this should be set to make the bars stacked
+              }],
+              yAxes: [{
+                 stacked: true // this also..
+              }]
+           },
+        }
+     },
+     );
+  </script>
+
+    <script>
         const ctx1 = document.getElementById('myChart1');
-        var chartDepartemen = new Chart(ctx1, {
+        var chartRole = new Chart(ctx1, {
           type: 'bar',
           data: {
              labels: [''],
@@ -141,7 +204,7 @@
                 data: [],
                 backgroundColor: '#22aa99'
              }, {
-                label: 'Dosen & Staff',
+                label: 'Dosen',
                 data: [],
                 backgroundColor: '#994499'
              }, {
@@ -175,6 +238,7 @@
        },
        );
     </script>
+    
 
     <script>
          function resize(){    
@@ -191,12 +255,52 @@
     <script type="text/javascript">
         function getDataDepartemen(lable_name){
 
-          console.log("DEPARTEMEN "+ lable_name);
-          this.chartDepartemen.data.labels[0] = lable_name;
-          this.chartDepartemen.data.datasets[0].data[0] = 80; //Mahasiswa
-          this.chartDepartemen.data.datasets[1].data[0] = 10; //Dosen & Staff
-          this.chartDepartemen.data.datasets[2].data[0] = 30; //Tendik
+         const FTEIC = ['INFOR','SISFOR']
+         const FTK = ['TEKPAL','TEKLA']
 
+          console.log("DEPARTEMEN "+ lable_name);
+          this.chartRole.data.labels[0] = lable_name;
+          this.chartRole.data.datasets[0].data[0] = 200; //Mahasiswa
+          this.chartRole.data.datasets[1].data[0] = 200; //Dosen
+          this.chartRole.data.datasets[2].data[0] = 200; //Tendik
+
+         if(lable_name == "FTEIC"){
+            for(var i=0 ; i<FTEIC.length ; i++){
+               this.chartDepartemen.data.labels[i] = FTEIC[i];
+               this.chartDepartemen.data.datasets[0].data[i] = 100; //Mahasiswa
+               this.chartDepartemen.data.datasets[1].data[i] = 100; //Dosen
+               this.chartDepartemen.data.datasets[2].data[i] = 100; //Tendik
+            }
+         }else if(lable_name == "FTK"){
+            for(var i=0 ; i<FTK.length ; i++){
+               this.chartDepartemen.data.labels[0] = FTK[i];
+               this.chartDepartemen.data.datasets[0].data[i] = 300; //Mahasiswa
+               this.chartDepartemen.data.datasets[1].data[i] = 300; //Dosen
+               this.chartDepartemen.data.datasets[2].data[i] = 300; //Tendik
+            }
+         }else if(lable_name == "FTIRS"){
+            for(var i=0 ; i<FTEIC.length ; i++){
+               this.chartDepartemen.data.labels[0] = FTEIC[i];
+            }
+         }else if(lable_name == "FSAD"){
+            for(var i=0 ; i<FTEIC.length ; i++){
+               this.chartDepartemen.data.labels[0] = FTEIC[i];
+            }
+         }else if(lable_name == "CIVPLAN"){
+            for(var i=0 ; i<FTEIC.length ; i++){
+               this.chartDepartemen.data.labels[0] = FTEIC[i];
+            }
+         }else if(lable_name == "CREABIZ"){
+            for(var i=0 ; i<FTEIC.length ; i++){
+               this.chartDepartemen.data.labels[0] = FTEIC[i];
+            }
+         }else if(lable_name == "VOCATION"){
+            for(var i=0 ; i<FTEIC.length ; i++){
+               this.chartDepartemen.data.labels[0] = FTEIC[i];
+            }
+         }
+
+          this.chartRole.update();
           this.chartDepartemen.update();
 
           var apiUrl = 'https://pokeapi.co/api/v2/pokemon/ditto/';
@@ -210,6 +314,8 @@
           });
         }
     </script>
+
+    
 </body>
 
 </html>

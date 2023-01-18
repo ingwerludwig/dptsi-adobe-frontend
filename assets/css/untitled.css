@@ -36,7 +36,6 @@ label{
 #bootstrap-overrides { /* 100+1=101 priority score, yay! */
   border-collapse: collapse;
   border-radius: 7px;
-  overflow: hidden;
 }
 
 .mg-r-10 {
@@ -45,6 +44,7 @@ label{
 
 
 .chartWrapper {
+  width: 100%;
     position: relative;
 }
 
@@ -53,12 +53,25 @@ label{
     left: 0;
     top: 0;
     pointer-events:none;
+    width: 100%;
 }
 
 .chartAreaWrapper {
     overflow-x: scroll;
+    width: 100%;
 }
 
 #myChart{
-  width: 100%;
+  width: 300%;
+}
+
+.card-flexibles {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+@media (min-width: 700px) {
+  .card-flexibles { grid-template-columns: repeat(2, 1fr); }
 }
