@@ -50,7 +50,7 @@
                      <canvas id="myChartAxis"></canvas>
                  </div>  
                 </form>
-                <form class="custom-form rounded card-flexible" style="margin-top:90px">
+                <form class="custom-form rounded card-flexible " style="margin-top:90px">
                   <div class="chartWrapper">
                      <div class="chartAreaWrapper">
                       <h1>Role Usage Per Month</h1>
@@ -59,7 +59,7 @@
                      <canvas id="myChartAxis"></canvas>
                  </div>  
                 </form>
-                <form class="custom-form rounded card-flexible" style="margin-top:90px">
+                <form class="custom-form rounded card-flexible main-card" style="margin-top:90px">
                   <div class="chartWrapper">
                      <div class="chartAreaWrapper">
                       <h1>Department Usage Per Month</h1>
@@ -154,6 +154,8 @@
         data: {
            labels: [''],
            datasets: [{
+            barPercentage: 0.9,
+                categoryPercentage: 1,
               label: 'Mahasiswa',
               data: [],
               backgroundColor: '#22aa99'
@@ -255,14 +257,25 @@
     <script type="text/javascript">
         function getDataDepartemen(lable_name){
 
-         const FTEIC = ['INFOR','SISFOR']
-         const FTK = ['TEKPAL','TEKLA']
+         const FTEIC = ['T. INFORMATIKA','SISTEM INFORMASI','T. KOMPUTER','T. BIOMEDIK','T. ELEKTRO','TEKNOLOGI INFORMASI']
+         const FTK = ['T. PERKAPALAN','T. KELAUTAN','T. SISTEM PERKAPALAN','T. TRANSPORTASI LAUT']
+         const FSAD = ['FISIKA','MATEMATIKA','STATISTIKA','KIMIA','BIOLOGI','AKTUARIA']
+         const FTIRS = ['T. MESIN','T. KIMIA','T. FISIKA','T. SISTEM INSDUSTRI','T. MATERIAL']
+         const CIVPLAN = ['T. SIPIL','ARSITEKTUR','T. LINGKUNGAN','PWK','T. GEOMATIKA','T. GEOFISIKA']
+         const CREABIZ = ['DESAIN PRODUK','DESAIN INTERIOR','DESAIN KOMUNIKASI VISUAL','MANAJEMEN BISNIS','STUDI PEMBANGUNAN','MANAJEMEN TEKNOLOGI']
+         const VOCATION = ['STATISTIKA BISNIS','T. INSTRUMENTASI','T. KIMIA INDUSTRI','T. ELEKTRO OTOMASI','T. MESIN INDUSTRI','T. INFRASTRUKTUR SIPIL']
 
-          console.log("DEPARTEMEN "+ lable_name);
           this.chartRole.data.labels[0] = lable_name;
-          this.chartRole.data.datasets[0].data[0] = 200; //Mahasiswa
-          this.chartRole.data.datasets[1].data[0] = 200; //Dosen
-          this.chartRole.data.datasets[2].data[0] = 200; //Tendik
+          this.chartRole.data.datasets[0].data[0] = 50; //Mahasiswa
+          this.chartRole.data.datasets[1].data[0] = 50; //Dosen
+          this.chartRole.data.datasets[2].data[0] = 50; //Tendik
+
+          for(var i=0 ; i<this.chartDepartemen.data.datasets[0].data.length ; i++){
+            this.chartDepartemen.data.labels[i] = ''
+            this.chartDepartemen.data.datasets[0].data[i] =0
+            this.chartDepartemen.data.datasets[1].data[i] =0
+            this.chartDepartemen.data.datasets[2].data[i] =0
+         }
 
          if(lable_name == "FTEIC"){
             for(var i=0 ; i<FTEIC.length ; i++){
@@ -270,33 +283,56 @@
                this.chartDepartemen.data.datasets[0].data[i] = 100; //Mahasiswa
                this.chartDepartemen.data.datasets[1].data[i] = 100; //Dosen
                this.chartDepartemen.data.datasets[2].data[i] = 100; //Tendik
+               this.chartDepartemen.update();
             }
          }else if(lable_name == "FTK"){
             for(var i=0 ; i<FTK.length ; i++){
-               this.chartDepartemen.data.labels[0] = FTK[i];
+               this.chartDepartemen.data.labels[i] = FTK[i];
+               this.chartDepartemen.data.datasets[0].data[i] = 200; //Mahasiswa
+               this.chartDepartemen.data.datasets[1].data[i] = 200; //Dosen
+               this.chartDepartemen.data.datasets[2].data[i] = 200; //Tendik
+               this.chartDepartemen.update();
+            }
+         }else if(lable_name == "FTIRS"){
+            for(var i=0 ; i<FTIRS.length ; i++){
+               this.chartDepartemen.data.labels[i] = FTIRS[i];
                this.chartDepartemen.data.datasets[0].data[i] = 300; //Mahasiswa
                this.chartDepartemen.data.datasets[1].data[i] = 300; //Dosen
                this.chartDepartemen.data.datasets[2].data[i] = 300; //Tendik
-            }
-         }else if(lable_name == "FTIRS"){
-            for(var i=0 ; i<FTEIC.length ; i++){
-               this.chartDepartemen.data.labels[0] = FTEIC[i];
+               this.chartDepartemen.update();
             }
          }else if(lable_name == "FSAD"){
-            for(var i=0 ; i<FTEIC.length ; i++){
-               this.chartDepartemen.data.labels[0] = FTEIC[i];
+            for(var i=0 ; i<FSAD.length ; i++){
+               this.chartDepartemen.data.labels[i] = FSAD[i];
+               this.chartDepartemen.data.datasets[0].data[i] = 400; //Mahasiswa
+               this.chartDepartemen.data.datasets[1].data[i] = 400; //Dosen
+               this.chartDepartemen.data.datasets[2].data[i] = 400; //Tendik
+               this.chartDepartemen.update();
+               
             }
          }else if(lable_name == "CIVPLAN"){
-            for(var i=0 ; i<FTEIC.length ; i++){
-               this.chartDepartemen.data.labels[0] = FTEIC[i];
+            for(var i=0 ; i<CIVPLAN.length ; i++){
+               this.chartDepartemen.data.labels[i] = CIVPLAN[i];
+               this.chartDepartemen.data.datasets[0].data[i] = 500; //Mahasiswa
+               this.chartDepartemen.data.datasets[1].data[i] = 500; //Dosen
+               this.chartDepartemen.data.datasets[2].data[i] = 500; //Tendik
+               this.chartDepartemen.update();
             }
          }else if(lable_name == "CREABIZ"){
-            for(var i=0 ; i<FTEIC.length ; i++){
-               this.chartDepartemen.data.labels[0] = FTEIC[i];
+            for(var i=0 ; i<CREABIZ.length ; i++){
+               this.chartDepartemen.data.labels[i] = CREABIZ[i];
+               this.chartDepartemen.data.datasets[0].data[i] = 600; //Mahasiswa
+               this.chartDepartemen.data.datasets[1].data[i] = 600; //Dosen
+               this.chartDepartemen.data.datasets[2].data[i] = 600; //Tendik
+               this.chartDepartemen.update();
             }
          }else if(lable_name == "VOCATION"){
-            for(var i=0 ; i<FTEIC.length ; i++){
-               this.chartDepartemen.data.labels[0] = FTEIC[i];
+            for(var i=0 ; i<VOCATION.length ; i++){
+               this.chartDepartemen.data.labels[i] = VOCATION[i];
+               this.chartDepartemen.data.datasets[0].data[i] = 700; //Mahasiswa
+               this.chartDepartemen.data.datasets[1].data[i] = 700; //Dosen
+               this.chartDepartemen.data.datasets[2].data[i] = 700; //Tendik
+               this.chartDepartemen.update();
             }
          }
 
