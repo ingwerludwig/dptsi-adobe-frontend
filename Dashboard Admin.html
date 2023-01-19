@@ -50,15 +50,7 @@
                      <canvas id="myChartAxis"></canvas>
                  </div>  
                 </form>
-                <form class="custom-form rounded card-flexible " style="margin-top:90px">
-                  <div class="chartWrapper">
-                     <div class="chartAreaWrapper">
-                      <h1>Role Usage Per Month</h1>
-                      <canvas id="myChart1"></canvas>
-                     </div>
-                     <canvas id="myChartAxis"></canvas>
-                 </div>  
-                </form>
+
                 <form class="custom-form rounded card-flexible main-card" style="margin-top:90px">
                   <div class="chartWrapper">
                      <div class="chartAreaWrapper">
@@ -100,7 +92,7 @@
              labels: ['FTEIC', 'FTK','FTIRS','FSAD','CIVPLAN','CREABIZ','VOCATION'], // responsible for how many bars are gonna show on the chart
              datasets: [{
                 barPercentage: 0.9,
-                categoryPercentage: 1,
+                categoryPercentage: 0.1,
                 label: 'Mahasiswa',
                 data: [3, 8, 10, 2, 3, 2, 9],
                 backgroundColor: '#22aa99'
@@ -195,51 +187,7 @@
      );
   </script>
 
-    <script>
-        const ctx1 = document.getElementById('myChart1');
-        var chartRole = new Chart(ctx1, {
-          type: 'bar',
-          data: {
-             labels: [''],
-             datasets: [{
-                label: 'Mahasiswa',
-                data: [],
-                backgroundColor: '#22aa99'
-             }, {
-                label: 'Dosen',
-                data: [],
-                backgroundColor: '#994499'
-             }, {
-                label: 'Tendik',
-                data: [],
-                backgroundColor: '#316395'
-             }]
-          },
-          onAnimationComplete: function () {
-            var sourceCanvas = this.chart.ctx.canvas;
-            var copyWidth = this.scale.xScalePaddingLeft - 5;
-            var copyHeight = this.scale.endPoint + 5;
-            var targetCtx = document.getElementById("myChartAxis").getContext("2d");
-            targetCtx.canvas.width = copyWidth;
-            targetCtx.drawImage(sourceCanvas, 0, 0, copyWidth, copyHeight, 0, 0, copyWidth, copyHeight);
-        },
-          options: {
-             responsive: false,
-             legend: {
-                position: 'right' // place legend on the right side of chart
-             },
-             scales: {
-                xAxes: [{
-                   stacked: true // this should be set to make the bars stacked
-                }],
-                yAxes: [{
-                   stacked: true // this also..
-                }]
-             },
-          }
-       },
-       );
-    </script>
+    
     
 
     <script>
@@ -265,10 +213,7 @@
          const CREABIZ = ['DESAIN PRODUK','DESAIN INTERIOR','DESAIN KOMUNIKASI VISUAL','MANAJEMEN BISNIS','STUDI PEMBANGUNAN','MANAJEMEN TEKNOLOGI']
          const VOCATION = ['STATISTIKA BISNIS','T. INSTRUMENTASI','T. KIMIA INDUSTRI','T. ELEKTRO OTOMASI','T. MESIN INDUSTRI','T. INFRASTRUKTUR SIPIL']
 
-          this.chartRole.data.labels[0] = lable_name;
-          this.chartRole.data.datasets[0].data[0] = 50; //Mahasiswa
-          this.chartRole.data.datasets[1].data[0] = 50; //Dosen
-          this.chartRole.data.datasets[2].data[0] = 50; //Tendik
+
 
           for(var i=0 ; i<this.chartDepartemen.data.datasets[0].data.length ; i++){
             this.chartDepartemen.data.labels[i] = ''
@@ -336,7 +281,7 @@
             }
          }
 
-          this.chartRole.update();
+          
           this.chartDepartemen.update();
 
           var apiUrl = 'https://pokeapi.co/api/v2/pokemon/ditto/';

@@ -62,19 +62,19 @@ label{
 }
 
 #myChart{
-  width: 300%;
+  width: 125%;
 }
 
 #myChart2{
   width: 100%;
 }
 
-.card-flexibles {
+/* .card-flexibles {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
+} */
 
 @media (min-width: 700px) {
   .card-flexibles { grid-template-columns: repeat(2, 1fr); }
