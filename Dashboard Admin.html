@@ -40,11 +40,11 @@
                     </button>
                 </a>
 
-                <a href="./Admin Edit License Form.html">
-                  <button class="btn btn-primary" style="border: none;width: fit-content;height: fit-content;margin-left: 50px;background-color: #013880;float: left;" type="button">
+                <!-- <a href="./Admin Edit License Form.html">
+                     <button class="btn btn-primary" style="border: none;width: fit-content;height: fit-content;margin-left: 50px;background-color: #013880;float: left;" type="button">
                     Edit License 
                   </button>
-              </a>
+              </a> -->
                 <form class="custom-form rounded card-flexible main-card" style="margin-top:90px">
                   <div class="chartWrapper">
                      <div class="chartAreaWrapper">
@@ -56,15 +56,6 @@
                      <canvas id="myChartAxis"></canvas>
                  </div>  
                 </form>
-                <!-- <form class="custom-form rounded card-flexible " style="margin-top:90px">
-                  <div class="chartWrapper">
-                     <div class="chartAreaWrapper">
-                      <h1>Role Usage Per Month</h1>
-                      <canvas id="myChart1"></canvas>
-                     </div>
-                     <canvas id="myChartAxis"></canvas>
-                 </div>  
-                </form> -->
                 <form class="custom-form rounded card-flexible main-card" style="margin-top:90px">
                   <div class="chartWrapper">
                      <div class="chartAreaWrapper">
@@ -103,20 +94,20 @@
         var chartFakultas = new Chart(ctx, {
           type: 'bar',
           data: {
-             labels: ['FTEIC', 'FTK','FTIRS','FSAD','CIVPLAN','CREABIZ','VOCATION'], // responsible for how many bars are gonna show on the chart
+             labels: ['FTEIC', 'FTK','FTIRS','FSAD','FTSPK','FDKBD','VOCATION','SIMT'], // responsible for how many bars are gonna show on the chart
              datasets: [{
                 barPercentage: 0.9,
                 categoryPercentage: 1,
                 label: 'Mahasiswa',
-                data: [3, 8, 10, 2, 3, 2, 9],
+                data: [3, 8, 10, 2, 3, 2, 9,9],
                 backgroundColor: '#22aa99'
              }, {
                 label: 'Dosen',
-                data: [2, 1, 2, 3, 2, 1, 4],
+                data: [2, 1, 2, 3, 2, 1, 4,9],
                 backgroundColor: '#994499'
              }, {
                 label: 'Tendik',
-                data: [4, 5, 6, 7, 2, 1, 4],
+                data: [4, 5, 6, 7, 2, 1, 4,9],
                 backgroundColor: '#316395'
              }]
           },
@@ -200,54 +191,7 @@
      },
      );
   </script>
-
-    <!-- <script>
-        const ctx1 = document.getElementById('myChart1');
-        var chartRole = new Chart(ctx1, {
-          type: 'bar',
-          data: {
-             labels: [''],
-             datasets: [{
-                label: 'Mahasiswa',
-                data: [],
-                backgroundColor: '#22aa99'
-             }, {
-                label: 'Dosen',
-                data: [],
-                backgroundColor: '#994499'
-             }, {
-                label: 'Tendik',
-                data: [],
-                backgroundColor: '#316395'
-             }]
-          },
-          onAnimationComplete: function () {
-            var sourceCanvas = this.chart.ctx.canvas;
-            var copyWidth = this.scale.xScalePaddingLeft - 5;
-            var copyHeight = this.scale.endPoint + 5;
-            var targetCtx = document.getElementById("myChartAxis").getContext("2d");
-            targetCtx.canvas.width = copyWidth;
-            targetCtx.drawImage(sourceCanvas, 0, 0, copyWidth, copyHeight, 0, 0, copyWidth, copyHeight);
-        },
-          options: {
-             responsive: false,
-             legend: {
-                position: 'right' // place legend on the right side of chart
-             },
-             scales: {
-                xAxes: [{
-                   stacked: true // this should be set to make the bars stacked
-                }],
-                yAxes: [{
-                   stacked: true // this also..
-                }]
-             },
-          }
-       },
-       );
-    </script> -->
     
-
     <script>
          function resize(){    
            $("#myChart").outerHeight($(window).height()-$("#myChart").offset().top- Math.abs($("#myChart").outerHeight(true) - $("#myChart").outerHeight()));
@@ -267,16 +211,10 @@
          const FTK = ['T. PERKAPALAN','T. KELAUTAN','T. SISTEM PERKAPALAN','T. TRANSPORTASI LAUT']
          const FSAD = ['FISIKA','MATEMATIKA','STATISTIKA','KIMIA','BIOLOGI','AKTUARIA']
          const FTIRS = ['T. MESIN','T. KIMIA','T. FISIKA','T. SISTEM INSDUSTRI','T. MATERIAL']
-         const CIVPLAN = ['T. SIPIL','ARSITEKTUR','T. LINGKUNGAN','PWK','T. GEOMATIKA','T. GEOFISIKA']
-         const CREABIZ = ['DESAIN PRODUK','DESAIN INTERIOR','DESAIN KOMUNIKASI VISUAL','MANAJEMEN BISNIS','STUDI PEMBANGUNAN','MANAJEMEN TEKNOLOGI']
+         const FTSPK = ['T. SIPIL','ARSITEKTUR','T. LINGKUNGAN','PWK','T. GEOMATIKA','T. GEOFISIKA']
+         const FDKBD = ['DESAIN PRODUK','DESAIN INTERIOR','DESAIN KOMUNIKASI VISUAL','MANAJEMEN BISNIS','STUDI PEMBANGUNAN','MANAJEMEN TEKNOLOGI']
          const VOCATION = ['STATISTIKA BISNIS','T. INSTRUMENTASI','T. KIMIA INDUSTRI','T. ELEKTRO OTOMASI','T. MESIN INDUSTRI','T. INFRASTRUKTUR SIPIL']
-/*
-          this.chartRole.data.labels[0] = lable_name;
-          this.chartRole.data.datasets[0].data[0] = 50; //Mahasiswa
-          this.chartRole.data.datasets[1].data[0] = 50; //Dosen
-          this.chartRole.data.datasets[2].data[0] = 50; //Tendik
-          */
-
+          
           for(var i=0 ; i<this.chartDepartemen.data.datasets[0].data.length ; i++){
             this.chartDepartemen.data.labels[i] = ''
             this.chartDepartemen.data.datasets[0].data[i] =0
@@ -317,17 +255,17 @@
                this.chartDepartemen.update();
                
             }
-         }else if(lable_name == "CIVPLAN"){
-            for(var i=0 ; i<CIVPLAN.length ; i++){
-               this.chartDepartemen.data.labels[i] = CIVPLAN[i];
+         }else if(lable_name == "FTSPK"){
+            for(var i=0 ; i<FTSPK.length ; i++){
+               this.chartDepartemen.data.labels[i] = FTSPK[i];
                this.chartDepartemen.data.datasets[0].data[i] = 500; //Mahasiswa
                this.chartDepartemen.data.datasets[1].data[i] = 500; //Dosen
                this.chartDepartemen.data.datasets[2].data[i] = 500; //Tendik
                this.chartDepartemen.update();
             }
-         }else if(lable_name == "CREABIZ"){
-            for(var i=0 ; i<CREABIZ.length ; i++){
-               this.chartDepartemen.data.labels[i] = CREABIZ[i];
+         }else if(lable_name == "FDKBD"){
+            for(var i=0 ; i<FDKBD.length ; i++){
+               this.chartDepartemen.data.labels[i] = FDKBD[i];
                this.chartDepartemen.data.datasets[0].data[i] = 600; //Mahasiswa
                this.chartDepartemen.data.datasets[1].data[i] = 600; //Dosen
                this.chartDepartemen.data.datasets[2].data[i] = 600; //Tendik
@@ -343,18 +281,8 @@
             }
          }
 
-          //this.chartRole.update();
           this.chartDepartemen.update();
 
-          var apiUrl = 'https://pokeapi.co/api/v2/pokemon/ditto/';
-          fetch(apiUrl).then(response => {
-            return response.json();
-          }).then(data => {
-            // Work with JSON data here
-            console.log(data);
-          }).catch(err => {
-            // Do something for an error here
-          });
         }
     </script>
 
