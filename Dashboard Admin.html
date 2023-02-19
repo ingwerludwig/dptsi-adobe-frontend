@@ -125,7 +125,7 @@
           options: {
              responsive: false,
              legend: {
-                position: 'right' // place legend on the right side of chart
+                display: false// place legend on the right side of chart
              },
              scales: {
                 xAxes: [{
@@ -181,6 +181,10 @@
            },
            scales: {
               xAxes: [{
+               ticks: {
+                  autoSkip: false
+                },
+               display: true,
                  stacked: true // this should be set to make the bars stacked
               }],
               yAxes: [{
@@ -192,18 +196,6 @@
      );
   </script>
     
-    <script>
-         function resize(){    
-           $("#myChart").outerHeight($(window).height()-$("#myChart").offset().top- Math.abs($("#myChart").outerHeight(true) - $("#myChart").outerHeight()));
-         }
-         $(document).ready(function(){
-           resize();
-           $(window).on("resize", function(){                      
-               resize();
-           });
-         });
-    </script>
-
     <script type="text/javascript">
         function getDataDepartemen(lable_name){
 
